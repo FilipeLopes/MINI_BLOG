@@ -29,3 +29,5 @@ Firebase instalation:
 7. And include the lines (at the end of the code):
     "const db = getFirestore(app); 
     export { db };"
+8. Access firebase website select project -> build ->  Authentication -> set up sign-in method -> 
+    Email/Password -> Enable Email/Password and save
