@@ -15,6 +15,7 @@ Serverless Project Installation:
     8.2. components (for the created components in the project)
     8.3. hooks (for the created hooks in the project)
     8.4. context (for all the created context in the project)
+    8.5. firebase (for firebase config)
 
 
 Firebase instalation:
@@ -22,3 +23,9 @@ Firebase instalation:
 1. Access firebase at google and criate a new db
 2. In "Get started by adding Firebase to your app" select web and register the app with a nickname, at the end select "continue to console"
 3. In the root file open the terminal and type "npm i firebase@9.16.0" (the last version is showing an error)
+4. In firebase website select the project and take the "SDK setup and configuration"
+5. Open firebase vscode file and create a file called config.js and paste the configuration from step 4
+6. In config.js include the import "import { getFirestore } from "firebase/firestore";"
+7. And include the lines (at the end of the code):
+    "const db = getFirestore(app); 
+    export { db };"
