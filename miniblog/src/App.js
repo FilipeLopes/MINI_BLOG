@@ -5,7 +5,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 //Import from firebase
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 
 //Import components
 import Navbar from './components/Navbar';
@@ -22,6 +22,7 @@ import { useRegister } from './hooks/useRegister';
 //Import pages
 import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+              <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
             </Routes>
           </div>
         </BrowserRouter>

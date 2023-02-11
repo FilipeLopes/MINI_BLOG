@@ -14,7 +14,7 @@ import { useAuthValue } from '../context/AuthContext';
 const Navbar = () => {
     const { user } = useAuthValue();
     const { logout } = useLogOut();
-    
+
     return (
         /* Navbar testing if is active or not */
         <nav className={styles.navbar}>
@@ -25,9 +25,15 @@ const Navbar = () => {
                 </li>
 
                 {!user && (
-                    <li>
-                        <NavLink to="/register" className={({ isActive }) => (isActive ? styles.active : "")}>Register</NavLink>
-                    </li>
+                    <>
+                        <li>
+                            <NavLink to="/register" className={({ isActive }) => (isActive ? styles.active : "")}>Register</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/login" className={({ isActive }) => (isActive ? styles.active : "")}>Login</NavLink>
+                        </li>
+                    </>
+
                 )}
 
                 {user && (
