@@ -2,7 +2,10 @@
 import styles from './Register.module.css';
 
 //hooks do react
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+//Mine hooks
+import { useRegister } from '../../hooks/useRegister';
 
 const Register = () => {
   //const to get de values
@@ -10,12 +13,15 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [error, setError] = useState("");
+  const {createUser, error: authError, loading} = useRegister();
+  
   //Function onSubmit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     //Avoit the refresh page
     e.preventDefault();
-    
+    setError("");
+
     //Creating the object user
     const user = {
       displayName,
@@ -25,12 +31,19 @@ const Register = () => {
 
     //Testing password, if something is wrong handleSubmit finishes
     if(password !== confirmPassword){
-      console.log("erro");
+      setError("Passwords must be the same!");
       return;
     };
 
-    console.log(user);
+    const res = await createUser(user);
+    
   };
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
   
   return (
     <div className={styles.register}>
@@ -53,7 +66,9 @@ const Register = () => {
             <span>Confirm password: </span>
             <input type="password" name="password" required placeholder="Confirm your password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
           </label>
-          <button>Register</button>
+          {!loading && <button>Register</button>}
+          {loading && <button>Wait...</button>}
+          {error && <p>{error}</p>}
         </form>
     </div>
   )
