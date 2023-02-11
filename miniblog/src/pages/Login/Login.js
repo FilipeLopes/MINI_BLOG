@@ -2,16 +2,34 @@
 import styles from './Login.module.css';
 
 //Import hooks from react
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+//Import my hooks
+import { useLogIn } from '../../hooks/useLogIn';
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const [error, setError] = useState("");
+
+    const { login, error: logError, loading } = useLogIn();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("");
+
+        const user = {
+            email,
+            password
+        }
+        await login(user);
     }
 
+    useEffect(() => {
+        if (logError) {
+            setError(logError);
+        }
+    }, [logError]);
     return (
 
         <div className={styles.login}>
@@ -27,6 +45,9 @@ const Login = () => {
                     <span>Password: </span>
                     <input type="password" name="password" required placeholder='Type your password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
+                {!loading && <button className="btn">Login</button>}
+                {loading && <button className="btn" disabled>Wait...</button>}
+                {error && <p className="error">{error}</p>}
             </form>
 
         </div>
