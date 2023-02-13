@@ -23,6 +23,7 @@ import { useRegister } from './hooks/useRegister';
 import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
+import CreatePost from './pages/CreatePost/CreatePost';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
               <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+              <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
             </Routes>
           </div>
         </BrowserRouter>

@@ -38,6 +38,9 @@ const Navbar = () => {
 
                 {user && (
                     <>
+                         <li>
+                            <NavLink to="/post/create" className={({ isActive }) => (isActive ? styles.active : "")}>Create Post</NavLink>
+                        </li>
                         <li><button onClick={logout}>Logout</button></li>
                         <li><span>{user.displayName}</span></li>
                     </>
