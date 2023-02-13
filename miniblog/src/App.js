@@ -24,6 +24,8 @@ import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import CreatePost from './pages/CreatePost/CreatePost';
+import Post from './pages/Post/Post';
+import Search from './pages/Search/Search';
 
 
 function App() {
@@ -53,6 +55,8 @@ function App() {
           <div className='container'>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/posts/:id" element={<Post />} />
               <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
               <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
               <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
