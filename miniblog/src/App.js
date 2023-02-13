@@ -26,6 +26,7 @@ import Login from './pages/Login/Login';
 import CreatePost from './pages/CreatePost/CreatePost';
 import Post from './pages/Post/Post';
 import Search from './pages/Search/Search';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
               <Route path="/posts/:id" element={<Post />} />
               <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
               <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+              <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
               <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
             </Routes>
           </div>
