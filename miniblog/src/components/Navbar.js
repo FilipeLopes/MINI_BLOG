@@ -45,7 +45,7 @@ const Navbar = () => {
                             <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : "")}>Dashboard</NavLink>
                         </li>
                         <li><button onClick={logout}>Logout</button></li>
-                        <li><span>{user.displayName}</span></li>
+                        <li><span className='fas fa-user-alt'></span><span className={styles.show_user}>{user.displayName[0].toUpperCase() + user.displayName.substring(1)}</span></li>
                     </>
                 )}
             </ul>

@@ -16,7 +16,7 @@ const Dashboard = () => {
   const {deleteDocument} = useDeleteDocument("posts");
 
   if(loading){
-    return <p>Carregando...</p>
+    return <p>Loading...</p>
   }
 
   return (

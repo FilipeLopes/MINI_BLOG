@@ -80,15 +80,15 @@ const CreatePost = () => {
                     <input type="text" name="image" required placeholder='Include the image that represents your post' onChange={(e) => setImage(e.target.value)} value={image} />
                 </label>
                 <label>
-                    <span>Conteúdo: </span>
+                    <span>Content: </span>
                     <textarea name="body" required placeholder="Insert the body content" onChange={(e) => setBody(e.target.value)} value={body}></textarea>
                 </label>
                 <label>
                     <span>Tags: </span>
                     <input type="text" name="tags" required placeholder="Insert tags separated by comma" onChange={(e) => setTags(e.target.value)} value={tags} />
                 </label>
-                {!response.loading && <button>Create Post</button>}
-                {response.loading && <button disabled>Wait...</button>}
+                {!response.loading && <button className='btn'>Create Post</button>}
+                {response.loading && <button disabled className='btn'>Wait...</button>}
                 {response.error && <p>{response.error}</p>}
                 {formError && <p>{formError}</p>}
             </form>

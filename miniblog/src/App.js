@@ -9,6 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 //Import components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 //Import context
 import { AuthProvider } from './context/AuthContext';
@@ -66,6 +67,7 @@ function App() {
               <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
             </Routes>
           </div>
+          <Footer/>
         </BrowserRouter>
       </AuthProvider>
     </div>
